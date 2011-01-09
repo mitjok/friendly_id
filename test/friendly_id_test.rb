@@ -48,9 +48,12 @@ module FriendlyId
     end
 
     class FriendlyIdTest < ::Test::Unit::TestCase
-      test "should parse a friendly_id name and sequence" do
-        assert_equal ["test", 2], "test--2".parse_friendly_id
+      %w( test--2 test–2 test—2 test―2 ).each do |separator|
+        test "should parse friendly id with dashes and funny dashes" do
+        assert_equal ["test", 2], separator.parse_friendly_id
+        end
       end
+
 
       test "should parse a friendly_id name and a double digit sequence" do
         assert_equal ["test", 12], "test--12".parse_friendly_id

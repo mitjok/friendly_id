@@ -56,8 +56,8 @@ end
 
 class String
   def parse_friendly_id(separator = nil)
-    separator ||= FriendlyId::Configuration::DEFAULTS[:sequence_separator]
-    name, sequence = split(/#{Regexp.escape(separator)}(\d+)?\z/)
+    separator ||= FriendlyId::Configuration::DEFAULTS[:matched_sequence_separators]
+    name, sequence = split(/#{separator}(\d+)?\z/)
     return name, (sequence ||= 1).to_i
   end
 end

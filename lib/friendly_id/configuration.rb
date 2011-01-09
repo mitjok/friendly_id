@@ -27,7 +27,8 @@ module FriendlyId
       :max_length                  => 255,
       :reserved_words              => ["index", "new"],
       :reserved_message            => 'can not be "%s"',
-      :sequence_separator          => "--"
+      :sequence_separator          => "--",
+      :matched_sequence_separators => /--|–|—|―/ # double hyphen, en dash, em dash, horizontal bar
     }
 
     # Whether to allow friendly_id and/or slugs to be nil. This is not
@@ -68,6 +69,9 @@ module FriendlyId
 
     # The string that separates slug names from slug sequences. Defaults to "--".
     attr_accessor :sequence_separator
+
+    # The string that separates slug names from slug sequences. Defaults to "--".
+    attr_accessor :matched_sequence_separators
 
     # Strip non-ASCII characters from the friendly_id string.
     attr_accessor :strip_non_ascii
