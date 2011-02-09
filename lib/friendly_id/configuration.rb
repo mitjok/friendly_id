@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module FriendlyId
 
   # This class is not intended to be used on its own, it is used internally
